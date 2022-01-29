@@ -57,7 +57,7 @@ it during the squash and merge operation on the PR.
 
 ## Build Process
 
-The CI/CD setup uses the [Docker build-push Action](https://github.com/docker/build-push-action) to publish ocntainer images. This is managed in [.github/workflows/release.yaml](./.github/workflows/release.yaml).
+The CI/CD setup uses the [Docker build-push Action](https://github.com/docker/build-push-action) to publish container images. This is managed in [.github/workflows/release.yaml](./.github/workflows/release.yaml).
 
 ## License
 
