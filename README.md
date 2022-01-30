@@ -4,7 +4,7 @@ The RaBe Python Base Image Minimal is a stripped down image that uses microdnf a
 manager and includes the latest python.
 
 The image is based on the [RaBe Universal Base Image 8 Minimal](https://github.com/radiorabe/container-image-ubi8-minimal)
-which is in turn based on the [Red Hat Universal Base Image 8 Minimal](https://catalog.redhat.com/software/containers/ubi8/ubi-minimal/)
+which is in turn based on the [Red Hat Universal Base Image 8 Minimal](https://catalog.redhat.com/software/containers/ubi8/ubi-minimal/5c359a62bed8bd75a2c3fba8)
 container provided by Red Hat.
 
 ## Features
