@@ -14,7 +14,7 @@ container provided by Red Hat.
 
 ## Usage
 
-Create a downstream image from this image:
+Create a downstream image from `ghcr.io/radiorabe/python-minimal`. Replace `:latest` with a specific version in the examples below.
 
 ```Dockerfile
 FROM ghcr.io/radiorabe/python-minimal:latest AS build
@@ -44,7 +44,7 @@ You can install os packages using microdnf. ie. if you use [setuptools-git-versi
 would install `git-core` to make it work.
 
 ```Dockerfile
-FROM ghcr.io/radiorabe/python-minimal:0.2.1 AS build
+FROM ghcr.io/radiorabe/python-minimal:latest AS build
 
 COPY ./ /app/
 
@@ -54,7 +54,7 @@ RUN    cd /app \
     && python3 setup.py bdist_wheel
 
 
-FROM ghcr.io/radiorabe/python-minimal:0.2.1 AS app
+FROM ghcr.io/radiorabe/python-minimal:latest AS app
 
 # ... same as in first example
 ```
@@ -62,11 +62,11 @@ FROM ghcr.io/radiorabe/python-minimal:0.2.1 AS app
 In some cases it can make sense to install some Python requirements as os dependencies. An example would be the postgresql driver that needs to be built against an os postgresql driver and should not be based on a manylinux build from pypi in production.
 
 ```Dockerfile
-FROM ghcr.io/radiorabe/python-minimal:0.2.1 AS build
+FROM ghcr.io/radiorabe/python-minimal:latest AS build
 
 # ... same as in first example
 
-FROM ghcr.io/radiorabe/python-minimal:0.2.1 AS app
+FROM ghcr.io/radiorabe/python-minimal:latest AS app
 
 RUN    microdnf install python39-psycopg2 \
     && microdnf clean all \
