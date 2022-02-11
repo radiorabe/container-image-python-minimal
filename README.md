@@ -79,7 +79,7 @@ CMD ["python3", "-mapp"]
 ```
 
 In addition to building the container like this, the application needs to ensure that they pin a psycopg2 version range that includes the one provided by the os.
-You can validate this by checking the output of the container image build which should not contain a `Downloading psycopg2*.whl` line in `app` containers `python3 -mpip install` phase. 
+You can validate this by checking the output of the container image build which should not contain a `Downloading psycopg2*.whl` line in the `app` containers `python3 -mpip install` phase. 
 
 ## Release Management
 
