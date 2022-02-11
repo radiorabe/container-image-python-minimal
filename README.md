@@ -35,8 +35,10 @@ RUN    python3 -mpip --no-cache-dir install /tmp/dist/*.whl \
 
 USER nobody
 
-CMD ["python", "/app/main.py"]
+CMD ["python3", "-mapp"]
 ```
+
+The argument to `CMD` needs to call a Python module containing a `__main__` cli entrypoint. It is recommended that this is packaged as a [`console_scripts` style command line script](https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html).
 
 You can install os packages using microdnf. ie. if you use [setuptools-git-versioning](https://setuptools-git-versioning.readthedocs.io/en/stable/) you
 would install `git-core` to make it work.
@@ -56,6 +58,28 @@ FROM ghcr.io/radiorabe/python-minimal:0.2.1 AS app
 
 # ... same as in first example
 ```
+
+In some cases it can make sense to install some Python requirements as os dependencies. An example would be the postgresql driver that needs to be built against an os postgresql driver and should not be based on a manylinux build from pypi in production.
+
+```Dockerfile
+FROM ghcr.io/radiorabe/python-minimal:0.2.1 AS build
+
+# ... same as in first example
+
+FROM ghcr.io/radiorabe/python-minimal:0.2.1 AS app
+
+RUN    microdnf install python39-psycopg2 \
+    && microdnf clean all \
+    && python3 -mpip --no-cache-dir install /tmp/dist/*.whl \
+    && rm -rf /tmp/dist/
+
+USER nobody
+
+CMD ["python3", "-mapp"]
+```
+
+In addition to building the container like this, the application needs to ensure that they pin a psycopg2 version range that includes the one provided by the os.
+You can validate this by checking the output of the container image build which should not contain a `Downloading psycopg2*.whl` line in the `app` containers `python3 -mpip install` phase. 
 
 ## Release Management
 
