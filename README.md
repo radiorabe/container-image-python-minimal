@@ -17,15 +17,44 @@ container provided by Red Hat.
 Create a downstream image from this image:
 
 ```Dockerfile
-FROM ghcr.io/radiorabe/python-minimal:latest
+FROM ghcr.io/radiorabe/python-minimal:latest AS build
 
-COPY requirements.txt /app
+COPY ./ /app/
 
-RUN python3 -mpip install -r /app/requirements.txt
+RUN    cd /app \
+    && python3 -mpip --no-cache-dir install wheel \
+    && python3 setup.py bdist_wheel
 
-COPY . /app
+
+FROM ghcr.io/radiorabe/python-minimal:latest AS app
+
+COPY --from=build /app/dist/*.whl /tmp/dist/
+
+RUN    python3 -mpip --no-cache-dir install /tmp/dist/*.whl \
+    && rm -rf /tmp/dist/
+
+USER nobody
 
 CMD ["python", "/app/main.py"]
+```
+
+You can install os packages using microdnf. ie. if you use [setuptools-git-versioning](https://setuptools-git-versioning.readthedocs.io/en/stable/) you
+would install `git-core` to make it work.
+
+```Dockerfile
+FROM ghcr.io/radiorabe/python-minimal:0.2.1 AS build
+
+COPY ./ /app/
+
+RUN    cd /app \
+    && microdnf install git-core \
+    && python3 -mpip --no-cache-dir install setuptools-git-versioning wheel \
+    && python3 setup.py bdist_wheel
+
+
+FROM ghcr.io/radiorabe/python-minimal:0.2.1 AS app
+
+# ... same as in first example
 ```
 
 ## Release Management
