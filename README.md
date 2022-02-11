@@ -73,6 +73,8 @@ RUN    microdnf install python39-psycopg2 \
     && python3 -mpip --no-cache-dir install /tmp/dist/*.whl \
     && rm -rf /tmp/dist/
 
+COPY --from=build /app/dist/*.whl /tmp/dist/
+
 USER nobody
 
 CMD ["python3", "-mapp"]
