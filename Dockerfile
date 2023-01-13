@@ -1,4 +1,4 @@
-FROM ghcr.io/radiorabe/ubi8-minimal:1.0.1
+FROM ghcr.io/radiorabe/ubi8-minimal:1.0.2
 
 RUN    microdnf install -y python39 \
     && microdnf clean all \
