@@ -1,4 +1,4 @@
-site_name: Python 3.11 on UBI9 Minimal
+site_name: UBI9 Python Minimal
 repo_url: https://github.com/radiorabe/container-image-python-minimal
 repo_name: radiorabe/container-image-python-minimal
 
@@ -19,6 +19,7 @@ theme:
     repo: fontawesome/brands/git-alt
   features:
     - content.code.copy
+    - content.code.annotate
     - toc.integrate
 
 markdown_extensions:
