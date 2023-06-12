@@ -1,0 +1,20 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: python-minimal
+  description: Python on UBI9 Minimal
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: radiorabe/container-image-python-minimal
+  links:
+    - url: https://catalog.redhat.com/software/containers/ubi9/ubi-minimal/615bd9b4075b022acc111bf5
+      title: Red Hat Universal Base Image 9 Minimal
+    - url: https://catalog.redhat.com/software/containers/ubi9/python-311/63f764b03f0b02a2e2d63fff
+      title: Red Hat Python 3.11 on UBI9
+spec:
+  type: baseimage
+  lifecycle: experimental
+  owner: it-reaktion
+  dependsOn:
+    - component:default/rabe-ubi9-minimal
