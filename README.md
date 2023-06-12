@@ -3,14 +3,15 @@
 The RaBe Python Base Image Minimal is a stripped down image that uses microdnf as a package
 manager and includes the latest python.
 
-The image is based on the [RaBe Universal Base Image 8 Minimal](https://github.com/radiorabe/container-image-ubi8-minimal)
-which is in turn based on the [Red Hat Universal Base Image 8 Minimal](https://catalog.redhat.com/software/containers/ubi8/ubi-minimal/5c359a62bed8bd75a2c3fba8)
-container provided by Red Hat.
+The image is based on the [RaBe Universal Base Image 9 Minimal](https://github.com/radiorabe/container-image-ubi9-minimal)
+which is in turn based on the [AlmaLinux 9 UBI9 variant image](https://github.com/AlmaLinux/docker-images)
+container provided by AlmaLinux and based on the work from [Red Hat](https://catalog.redhat.com/software/containers/ubi9-minimal/61832888c0d15aff4912fe0d).
+
 
 ## Features
 
-- Based on RaBe Universal Base Image 8 Minimal
-- Contains the latest Python 3.x available in UBI8
+- Based on RaBe Universal Base Image 9 Minimal
+- Contains the latest Python 3.x available in UBI9
 
 ## Usage
 
@@ -68,7 +69,7 @@ FROM ghcr.io/radiorabe/python-minimal:latest AS build
 
 FROM ghcr.io/radiorabe/python-minimal:latest AS app
 
-RUN    microdnf install python39-psycopg2 \
+RUN    microdnf install python311-psycopg2 \
     && microdnf clean all \
     && python3 -mpip --no-cache-dir install /tmp/dist/*.whl \
     && rm -rf /tmp/dist/
