@@ -1,4 +1,4 @@
-FROM ghcr.io/radiorabe/ubi9-minimal:0.6.9
+FROM ghcr.io/radiorabe/ubi9-minimal:0.7.0
 
 RUN    microdnf install -y \
          python3.11 \
