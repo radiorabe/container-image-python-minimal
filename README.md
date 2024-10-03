@@ -69,7 +69,7 @@ FROM ghcr.io/radiorabe/python-minimal:latest AS build
 
 FROM ghcr.io/radiorabe/python-minimal:latest AS app
 
-RUN    microdnf install python311-psycopg2 \
+RUN    microdnf install python312-psycopg2 \
     && microdnf clean all \
     && python3 -mpip --no-cache-dir install /tmp/dist/*.whl \
     && rm -rf /tmp/dist/
