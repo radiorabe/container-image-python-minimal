@@ -15,6 +15,6 @@ jobs:
       image: ghcr.io/radiorabe/python-minimal
       name: python-minimal
       display-name: RaBe Python Base Image Minimal
-      tags: minimal rhel8 rabe python python311
+      tags: minimal rhel8 rabe python python312
   mkdocs:
     uses: radiorabe/actions/.github/workflows/release-mkdocs.yaml@v0.22.3
