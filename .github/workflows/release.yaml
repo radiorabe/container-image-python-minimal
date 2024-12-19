@@ -10,11 +10,11 @@ on:
 
 jobs:
   release-container:
-    uses: radiorabe/actions/.github/workflows/release-container.yaml@v0.25.0
+    uses: radiorabe/actions/.github/workflows/release-container.yaml@v0.26.0
     with:
       image: ghcr.io/radiorabe/python-minimal
       name: python-minimal
       display-name: RaBe Python Base Image Minimal
       tags: minimal rhel8 rabe python python312
   mkdocs:
-    uses: radiorabe/actions/.github/workflows/release-mkdocs.yaml@v0.25.0
+    uses: radiorabe/actions/.github/workflows/release-mkdocs.yaml@v0.26.0
