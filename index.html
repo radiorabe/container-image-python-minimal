@@ -437,7 +437,7 @@ container provided by AlmaLinux and based on the work from <a href="https://cata
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">USER</span><span class="w"> </span><span class="s">nobody</span>
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-mapp&quot;</span><span class="p">]</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"python3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"-mapp"</span><span class="p">]</span>
 </code></pre></div>
 <p>The argument to <code>CMD</code> needs to call a Python module containing a <code>__main__</code> cli entrypoint. It is recommended that this is packaged as a <a href="https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html"><code>console_scripts</code> style command line script</a>.</p>
 <p>You can install os packages using microdnf. ie. if you use <a href="https://setuptools-git-versioning.readthedocs.io/en/stable/">setuptools-git-versioning</a> you
@@ -472,7 +472,7 @@ would install <code>git-core</code> to make it work.</p>
 <a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
 <a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="k">USER</span><span class="w"> </span><span class="s">nobody</span>
 <a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-mapp&quot;</span><span class="p">]</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"python3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"-mapp"</span><span class="p">]</span>
 </code></pre></div>
 <p>In addition to building the container like this, the application needs to ensure that they pin a psycopg2 version range that includes the one provided by the os.
 You can validate this by checking the output of the container image build which should not contain a <code>Downloading psycopg2*.whl</code> line in the <code>app</code> containers <code>python3 -mpip install</code> phase. </p>
